@@ -1,0 +1,88 @@
+<!-- Define que el documento esta bajo el estandar de HTML 5 -->
+<!doctype html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+    
+    <head>
+        <title>{% block title %}{% endblock %} - Myapp</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        
+    
+        
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+        
+        <!-- Link hacia el archivo de estilos css -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+        <script type="text/javascript">
+        </script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='/js/validacion.js') }}"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        
+
+        
+    </head>
+    
+    <body>
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                  <nav class="rounded-t-md prose">
+                    <h1 class="rounded-t-md text-center text-white bg-sky-500/50 ...">Akatsuki-Email</h1>
+                  </nav>
+                  <div>
+                    <div>
+                      <ul>
+                      {% if g.user %}
+                      <div class="titulo3">Bienvenido:  <span>{{ g.user['username'] }}</span> </div>
+                      <div class="texto5"><a  href="{{ url_for('auth.logout') }}">Cerrar Sesión</a></div>
+                      {% else %}
+                      {% endif %}
+                      </ul> 
+                    </div>
+                  </div>
+                  <section class="content">
+                    <header class="mb-2 flex justify-between">
+                    {% block header %}{% endblock %}
+                    </header>
+            
+                    {% block content %}{% endblock %}
+                  </section>
+                  <footer>
+                    {% block footer %}
+                    {% if g.user %}
+                    <div class="pie-form">
+                      <a>@copyright 2022 by Uninorte</a>
+                    </div>
+                    {% else %}
+                    <div class="pie-form">
+                      <a href="{{ url_for('auth.login') }}">Ingresar</a>
+                      <a href="{{ url_for('auth.forgot') }}">¿Perdiste tu contraseña?</a>
+                      <a href="{{ url_for('auth.register') }}">¿No tienes Cuenta? Registrate</a>
+                    </div>
+                    <div class="pie-form">
+                      <a>@copyright 2022 by Uninorte</a>
+                    </div>
+                    {% endif %}
+                    {% endblock %}
+                  </footer>
+                  <div class="inferior">
+                    {% for message in get_flashed_messages() %}
+                    <div class="flash rounded-md bg-cyan-500 hover:bg-cyan-600 ... text-white ">{{ message }}</div>
+                    {% endfor %}
+                  </div>
+            
+                </div>
+            </div> 
+        </div>
+         
+     
+    </body>
+    
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base1.html' %}
+
+{% block header %}
+  <div class="texto4">{% block title %}Mensajes{% endblock %}</div>
+  {% if g.user %}
+    <div class="flex justify-end">
+      <a class="action texto5" href="{{ url_for('inbox.send') }}">Nuevo</a>
+      <a class="action texto5" href="{{ url_for('inbox.getDB') }}">get DB</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for message in messages %}
+    
+      <header>
+        <div>
+          <h3 class="texto4">{{ message['subject'] }} from {{ message['username'] }} on {{ message['created'].strftime('%Y-%m-%d') }}</h3>
+        </div>
+      </header>
+      <p class="texto1">{{ message['body'] }}</p>
+    
+  {% endfor %}
+{% endblock %}

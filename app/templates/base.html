@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="bg-slate-900">
+  <head>
+    <title>{% block title %}{% endblock %} - Myapp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='/js/validacion.js') }}"></script>
+  </head>
+  <body class="max-w-lg mx-auto rounded-md">
+    <nav class="rounded-t-md prose">
+      <h1 class="m-2 ml-1" >Demo</h1>
+      <ul class="m-0">
+        {% if g.user %}
+          <li><span>{{ g.user['username'] }}</span>
+          <li><a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a>
+        {% else %}
+          <li><a href="{{ url_for('auth.register') }}">Registrarse</a>
+          <li><a href="{{ url_for('auth.login') }}">Login</a>
+          <li><a href="{{ url_for('auth.forgot') }}">Olvide Mi Contraseña?</a>
+        {% endif %}
+      </ul>
+    </nav>
+    <section class="content">
+      <header class="mb-2 flex justify-between">
+        {% block header %}{% endblock %}
+      </header>
+      {% for message in get_flashed_messages() %}
+        <div class="flash rounded-md bg-indigo-300 border-indigo-600 text-indigo-800">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>

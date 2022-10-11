@@ -1,0 +1,31 @@
+{% extends 'base1.html' %}
+
+{% block header %}
+{% block title %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="titulo text-center">Registro</div>
+ 
+
+  <form method="post" action="{{ url_for('auth.register')}}" class="px-4 container">   
+    <input type="text" name="username" id="username" class="rounded-md mb-2" placeholder="Usuario" required>
+    <input type="email" name="email" id="email" class="rounded-md mb-2" placeholder="Example@uninorte.edu.co" required><div class="rounded-md mb-2">
+        <div class="rounded-md mb-2">
+          <div class="input-group">
+            <input type="password" name="password" id="password" class="form-control rounded-md" placeholder="Contraseña" required>
+              <div class="input-group-append ">
+                <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon " style="color:black"></span> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+    <button type="submit" title="Ingresar" name="Ingresar" class="py-2 cursor-pointer">Crear Cuenta</button>
+    
+  </form>
+ 
+{% endblock %}
+
+
+

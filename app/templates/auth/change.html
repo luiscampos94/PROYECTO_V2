@@ -1,0 +1,36 @@
+{% extends 'base1.html' %}
+
+{% block header %}
+{% block title %}{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('auth.confirm')}}" class="px-4">
+    <div class="titulo2 text-center">Cambiar Contraseña</div>
+   
+          
+            
+
+
+    <!-- <input type="password" name="password" id="password" class="rounded-md mb-2" required> -->
+    
+    <div class="container">
+      <div class="rounded-md mb-2">
+        <div class="rounded-md mb-2">
+          <div class="input-group">
+            <input type="password" name="password" id="password" class="form-control rounded-md" placeholder="Nueva Contraseña" required>
+          <input type="password" name="password1" id="password1" class="form-control rounded-md" placeholder="Confirmar Contraseña" required>
+            <div class="input-group-append ">
+              <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword1(), mostrarPassword()"> <span class="fa fa-eye-slash icon " style="color:black"></span> </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <input type="password" name="password1" id="password1" class="rounded-md mb-6" required> -->
+    <input type="hidden" id="authid" name="authid" value={{number}}>
+    <button type="submit" title="Ingresar" name="Ingresar" class="py-2 cursor-pointer">Confirmar</button>
+    
+  </form>
+   
+{% endblock %}

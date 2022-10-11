@@ -1,0 +1,18 @@
+{% extends 'base1.html' %}
+
+{% block header %}
+  <h2 class="titulo3">{% block title %}Nuevo Mensaje{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{url_for('inbox.send')}}" class="px-4">
+    <label class="texto4" for="to">Para:</label>
+    <input type="text" name="to" id="to" class="rounded-md mb-2" required>
+    <label for="subject" class="texto4">Asunto:</label>
+    <input type="text" name="subject" id="subject" class="rounded-md mb-2" required>
+    <label for="body" class="texto4">Cuerpo:</label> <br>
+    <textarea name="body" id="body" rows="3" class=" contenedor rounded-md mb-6 w-full" required ></textarea>
+    <button type="submit" title="Ingresar" name="Ingresar" class="py-2 cursor-pointer">Enviar</button>
+    
+  </form>
+{% endblock %}

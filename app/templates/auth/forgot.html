@@ -1,0 +1,14 @@
+{% extends 'base1.html' %}
+
+{% block header %}
+{% block title %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="titulo3">Recuperar Contraseña!</div>
+  <form method="post" action="{{ url_for('auth.forgot')}}" class="px-4">
+
+    <input type="email" name="email" id="email" class="rounded-md mb-6" placeholder="Digita tu Correo" required>
+    <button type="submit" title="Ingresar" name="Ingresar" class="py-2 cursor-pointer">Recuperar</button>
+    </form>
+{% endblock %}
