@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
   <form method="post" action="{{url_for('inbox.send')}}" class="px-4">
     <label class="texto4" for="to">Para:</label>
     <input type="text" name="to" id="to" class="rounded-md mb-2" required>
@@ -13,6 +14,11 @@
     <label for="body" class="texto4">Cuerpo:</label> <br>
     <textarea name="body" id="body" rows="3" class=" contenedor rounded-md mb-6 w-full" required ></textarea>
     <button type="submit" title="Ingresar" name="Ingresar" class="py-2 cursor-pointer">Enviar</button>
-    
+
+    <button>
+  <a
+  href="{{url_for('inbox.show')}}" action= "{{url_for('inbox.show')}}" class="px-4" >Atras</a></button>
+
   </form>
+
 {% endblock %}
